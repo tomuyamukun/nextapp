@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css";
+import classes from "./Headline.module.css";
 
 interface MyObj {
 	foo: string;
@@ -20,9 +20,9 @@ export function Headline(props: Props) {
 	console.log(props);
 	return (
 		<div>
-			<h1 className={styles.title}>{props.page} Page</h1>
+			<h1 className={classes.title}>{props.page} Page</h1>
 
-			<p className={styles.description}>
+			<p className={classes.description}>
 				Get started by editing
 				{props.children}
 			</p>
