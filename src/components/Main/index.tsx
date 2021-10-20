@@ -1,6 +1,7 @@
 import { Headline } from "src/components/Headline";
 import { Links } from "src/components/Links";
 import classes from "src/components/Main/Main.module.css";
+import React, { useEffect } from "react";
 
 interface MyObj {
 	foo: string;

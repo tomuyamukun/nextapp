@@ -3,7 +3,7 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 import styles from "../styles/Home.module.css";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 
 export default function Home() {
 	const buttonClick = useCallback(
@@ -13,6 +13,15 @@ export default function Home() {
 		},
 		[]
 	);
+	useEffect(() => {
+		console.log("マウント時");
+		document.body.style.backgroundColor = "lightblue";
+
+		return () => {
+			console.log("アンマウント時");
+			document.body.style.backgroundColor = "";
+		};
+	}, []);
 
 	return (
 		<div className={styles.container}>
