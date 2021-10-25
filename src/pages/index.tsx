@@ -7,6 +7,8 @@ import React, { useCallback, useEffect, useState } from "react";
 
 export default function Home() {
 	const [count, setCount] = useState<number>(1);
+	const [text, setText] = useState<string>("");
+	const [isShow, setIsShow] = useState<boolean>(true);
 
 	const handleClick = useCallback(
 		(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -15,17 +17,28 @@ export default function Home() {
 		},
 		[]
 	);
+
+	const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+		if (e.target.value.length > 5) {
+			alert("5文字以上はだめ");
+			return;
+		}
+		setText(e.target.value.trim());
+	}, []);
+
+	const handleDisplay = useCallback(() => {
+		setIsShow((isShow) => !isShow);
+	}, []);
+
 	useEffect(() => {
-		// console.log("マウント時");
+		console.log("マウント時");
 		document.body.style.backgroundColor = "lightblue";
 
 		return () => {
-			// console.log("アンマウント時");
+			console.log("アンマウント時");
 			document.body.style.backgroundColor = "";
 		};
-	}, []);
-
-	console.log(num);
+	}, [count]);
 
 	return (
 		<div className={styles.container}>
@@ -33,8 +46,10 @@ export default function Home() {
 				<title>Create Next App</title>
 			</Head>
 			<Header />
-			<h1>{num}</h1>
+			{isShow ? <h1>{count}</h1> : null}
 			<button onClick={handleClick}>ボタン</button>
+			<button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
+			<input type="text" value={text} onChange={handleChange} />
 			<Main page="index" />
 			<Footer />
 		</div>
