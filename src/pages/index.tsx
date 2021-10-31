@@ -9,6 +9,7 @@ export default function Home() {
 	const [count, setCount] = useState<number>(1);
 	const [text, setText] = useState<string>("");
 	const [isShow, setIsShow] = useState<boolean>(true);
+	const [array, setArray] = useState<any[]>([]);
 
 	const handleClick = useCallback(
 		(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -30,6 +31,16 @@ export default function Home() {
 		setIsShow((prevIsShow) => !prevIsShow);
 	}, []);
 
+	const handleAdd = useCallback(() => {
+		setArray((prevArray) => {
+			if (prevArray.some((item: any) => item === text)) {
+				alert("同じ要素がすでにあるぞ");
+				return prevArray;
+			}
+			return [...prevArray, text];
+		});
+	}, [text]);
+
 	useEffect(() => {
 		console.log("マウント時");
 		document.body.style.backgroundColor = "lightblue";
@@ -50,6 +61,12 @@ export default function Home() {
 			<button onClick={handleClick}>ボタン</button>
 			<button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
 			<input type="text" value={text} onChange={handleChange} />
+			<button onClick={handleAdd}>追加</button>
+			<ul>
+				{array.map((item) => {
+					return <div key={item}>{item}</div>;
+				})}
+			</ul>
 			<Main page="index" />
 			<Footer />
 		</div>
