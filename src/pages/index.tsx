@@ -13,7 +13,7 @@ export default function Home() {
 	const handleClick = useCallback(
 		(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 			e.preventDefault();
-			setCount((count) => count + 1);
+			setCount((prevCount) => prevCount + 1);
 		},
 		[]
 	);
@@ -27,7 +27,7 @@ export default function Home() {
 	}, []);
 
 	const handleDisplay = useCallback(() => {
-		setIsShow((isShow) => !isShow);
+		setIsShow((prevIsShow) => !prevIsShow);
 	}, []);
 
 	useEffect(() => {
