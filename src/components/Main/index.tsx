@@ -49,7 +49,7 @@ const ITEMS: LinkObj[] = [
 	},
 ];
 
-export function Main(props: Props) {
+export const Main = (props: Props) => {
 	const [items, setItems] = useState(ITEMS);
 	const handleReduce = useCallback(
 		(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -67,4 +67,4 @@ export function Main(props: Props) {
 			<Links items={items} />
 		</main>
 	);
-}
+};

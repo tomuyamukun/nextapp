@@ -19,7 +19,7 @@ type Props = {
 	) => void;
 };
 
-export function Headline(props: Props) {
+export const Headline = (props: Props) => {
 	console.log(props);
 	return (
 		<div>
@@ -33,4 +33,4 @@ export function Headline(props: Props) {
 			<button onClick={props.handleReduce}>減らす</button>
 		</div>
 	);
-}
+};

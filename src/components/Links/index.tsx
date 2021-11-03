@@ -5,10 +5,10 @@ type LinkObj = {
 	description: string;
 };
 
-export function Links({ items }) {
+export function Links(props: LinkObj[]) {
 	return (
 		<div className={classes.grid}>
-			{items.map((item: LinkObj) => {
+			{props.items.map((item: LinkObj) => {
 				return (
 					<a key={item.href} href={item.href} className={classes.card}>
 						<h2 className={classes.title}>{item.title}</h2>
