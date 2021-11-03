@@ -6,7 +6,7 @@ import styles from "../styles/Home.module.css";
 import React from "react";
 
 type props = {
-	count: number;
+	doubleCount: number;
 	isShow: boolean;
 	handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	handleDisplay: () => void;
@@ -18,7 +18,7 @@ type props = {
 
 export default function Home(props: props) {
 	const {
-		count,
+		doubleCount,
 		isShow,
 		handleClick,
 		handleDisplay,
@@ -35,7 +35,7 @@ export default function Home(props: props) {
 			</Head>
 			<Header />
 
-			{isShow ? <h1>{count}</h1> : null}
+			{isShow ? <h1>{doubleCount}</h1> : null}
 			<button onClick={handleClick}>ボタン</button>
 			<button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
 
