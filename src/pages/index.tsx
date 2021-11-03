@@ -4,14 +4,29 @@ import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 import styles from "../styles/Home.module.css";
 import React from "react";
-import { useCounter } from "src/hooks/useCounter";
-import { useInputArray } from "src/hooks/useInputArray";
-import { useBgLightBlue } from "src/hooks/useBgLightBlue";
 
-export default function Home() {
-	const { count, isShow, handleClick, handleDisplay } = useCounter();
-	const { text, array, handleAdd, handleChange } = useInputArray();
-	useBgLightBlue();
+type props = {
+	count: number;
+	isShow: boolean;
+	handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+	handleDisplay: () => void;
+	text: string;
+	array: any[];
+	handleAdd: () => void;
+	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+export default function Home(props: props) {
+	const {
+		count,
+		isShow,
+		handleClick,
+		handleDisplay,
+		text,
+		array,
+		handleAdd,
+		handleChange,
+	} = props;
 
 	return (
 		<div className={styles.container}>
