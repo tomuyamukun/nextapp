@@ -12,8 +12,11 @@ type Props = {
 	obj?: MyObj;
 	boolean?: boolean;
 	code?: JSX.Element;
-	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+	onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 	children?: JSX.Element;
+	handleReduce: (
+		event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => void;
 };
 
 export function Headline(props: Props) {
@@ -23,11 +26,11 @@ export function Headline(props: Props) {
 			<h1 className={classes.title}>{props.page} Page</h1>
 
 			<p className={classes.description}>
-				Get started by editing
-				{props.children}
+				アイテムの数は
+				{props.children}個です
 			</p>
 
-			{/* <button onClick={props.onClick}>ボタン</button> */}
+			<button onClick={props.handleReduce}>減らす</button>
 		</div>
 	);
 }
