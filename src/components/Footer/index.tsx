@@ -10,6 +10,7 @@ export const Footer = () => {
 			>
 				Thanks by{" "}
 				<span className={classes.logo}>
+					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
 				</span>
 			</a>
