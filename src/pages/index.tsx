@@ -3,7 +3,7 @@ import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 import styles from "../styles/Home.module.css";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 type props = {
 	doubleCount: number;
@@ -16,30 +16,41 @@ type props = {
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
+type json = {
+	userId: number;
+	id: number;
+	title: string;
+	body: string;
+};
+
 const Home = (props: props) => {
+	const [posts, setPosts] = useState<json[]>([]);
+
+	const getPosts = useCallback(async () => {
+		const res: Response = await fetch(
+			"https://jsonplaceholder.typicode.com/posts"
+		);
+		const json: any = await res.json();
+		setPosts(json);
+	}, []);
+
+	useEffect(() => {
+		getPosts();
+	}, [getPosts]);
+
 	return (
 		<div className={styles.container}>
 			<Head>
 				<title>Create Next App</title>
 			</Head>
 			<Header />
-
-			{props.isShow ? <h1>{props.doubleCount}</h1> : null}
-			<button onClick={props.handleClick}>ボタン</button>
-			<button onClick={props.handleDisplay}>
-				{props.isShow ? "非表示" : "表示"}
-			</button>
-
-			<input type="text" value={props.text} onChange={props.handleChange} />
-			<button onClick={props.handleAdd}>追加</button>
-			<ul>
-				{props.array.map((item) => {
-					return <div key={item}>{item}</div>;
-				})}
-			</ul>
-
-			<Main page="index" />
-			<Footer />
+			{posts.length > 0 ? (
+				<ol>
+					{posts.map((post) => {
+						return <li key={post.id}>{post.title}</li>;
+					})}
+				</ol>
+			) : null}
 		</div>
 	);
 };
