@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
+import { Posts } from "src/components/Posts";
 import styles from "../styles/Home.module.css";
 import React, { useCallback, useEffect, useState } from "react";
 
@@ -23,34 +24,14 @@ type json = {
 	body: string;
 };
 
-const Home = (props: props) => {
-	const [posts, setPosts] = useState<json[]>([]);
-
-	const getPosts = useCallback(async () => {
-		const res: Response = await fetch(
-			"https://jsonplaceholder.typicode.com/posts"
-		);
-		const json: any = await res.json();
-		setPosts(json);
-	}, []);
-
-	useEffect(() => {
-		getPosts();
-	}, [getPosts]);
-
+const Home = () => {
 	return (
 		<div className={styles.container}>
 			<Head>
 				<title>Create Next App</title>
 			</Head>
 			<Header />
-			{posts.length > 0 ? (
-				<ol>
-					{posts.map((post) => {
-						return <li key={post.id}>{post.title}</li>;
-					})}
-				</ol>
-			) : null}
+			<Posts />
 		</div>
 	);
 };
