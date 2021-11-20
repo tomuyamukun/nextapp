@@ -1,9 +1,9 @@
 import classes from "src/components/Links/Links.module.css";
-type LinkObj = {
+interface LinkObj {
 	href: string;
 	title: string;
 	description: string;
-};
+}
 
 export function Links(props: LinkObj[]) {
 	return (
