@@ -1,3 +1,4 @@
+import Link from "next/Link";
 import { usePosts } from "src/hooks/usePosts";
 
 interface json {
@@ -23,7 +24,13 @@ export const Posts = () => {
 	return (
 		<ol>
 			{data.map((post: any) => {
-				return <li key={post.id}>{post.title}</li>;
+				return (
+					<li key={post.id}>
+						<Link href={`/post/${post.id}`}>
+							<a>{post.title}</a>
+						</Link>
+					</li>
+				);
 			})}
 		</ol>
 	);
