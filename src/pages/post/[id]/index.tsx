@@ -1,11 +1,8 @@
 import Head from "next/head";
-import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { Main } from "src/components/Main";
-import { Posts } from "src/components/Posts";
 import styles from "src/styles/Home.module.css";
 import React, { useCallback, useEffect, useState } from "react";
-import { useRouter } from "next/dist/client/router";
+import { Post } from "src/components/Post";
 
 type props = {
 	doubleCount: number;
@@ -18,25 +15,13 @@ type props = {
 	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-type json = {
-	userId: number;
-	id: number;
-	title: string;
-	body: string;
-};
-
-const Home = () => {
-	const router = useRouter();
-
+const PostId = () => {
 	return (
 		<div className={styles.container}>
-			<Head>
-				<title>Create Next App</title>
-			</Head>
 			<Header />
-			<div>{router.query.id}</div>
+			<Post />
 		</div>
 	);
 };
 
-export default Home;
+export default PostId;
