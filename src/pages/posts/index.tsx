@@ -24,7 +24,7 @@ type json = {
 
 const Posts = () => {
 	return (
-		<div className={styles.container}>
+		<div>
 			<Head>
 				<title>Posts Page</title>
 			</Head>

@@ -15,7 +15,7 @@ type props = {
 
 const Index = (props: props) => {
 	return (
-		<div className={styles.container}>
+		<div>
 			<Head>
 				<title>Create Next App</title>
 			</Head>
