@@ -7,7 +7,7 @@ type LinkObj = {
 };
 
 const NAV_ITEMS: LinkObj[] = [
-	{ href: "/", label: "Index" },
+	{ href: "/posts", label: "Posts" },
 	{ href: "/about", label: "About" },
 ];
 

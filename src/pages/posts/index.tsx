@@ -1,7 +1,5 @@
 import Head from "next/head";
-import { Footer } from "src/components/Footer";
 import { Header } from "src/components/Header";
-import { Main } from "src/components/Main";
 import { Posts } from "src/components/Posts";
 import styles from "src/styles/Home.module.css";
 import React, { useCallback, useEffect, useState } from "react";
