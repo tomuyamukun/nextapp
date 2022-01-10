@@ -17,6 +17,10 @@ export const Comment = () => {
 			</Head>
 			<div>
 				<h1>{comment?.body}</h1>
+				<ul>
+					<li>{comment?.name}</li>
+					<li>{comment?.email}</li>
+				</ul>
 			</div>
 		</div>
 	);

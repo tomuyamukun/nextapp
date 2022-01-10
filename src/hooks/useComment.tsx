@@ -1,9 +1,9 @@
-import { useRouter } from "next/dist/client/router";
+import { NextRouter, useRouter } from "next/dist/client/router";
 import useSWR from "swr";
 import { fetcher } from "src/utils/fetcher";
 
 export const useComment = () => {
-	const router = useRouter();
+	const router: NextRouter = useRouter();
 
 	const { data: comment, error: commentError } = useSWR(
 		router.query.id

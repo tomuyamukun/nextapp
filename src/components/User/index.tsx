@@ -1,4 +1,4 @@
-import { usePost } from "src/hooks/usePost";
+import { useUser } from "src/hooks/useUser";
 import Head from "next/head";
 
 interface json {
@@ -9,7 +9,7 @@ interface json {
 }
 
 export const User = () => {
-	const { post, user, error, isLoading } = usePost();
+	const { data, error, isLoading } = useUser();
 
 	if (isLoading) {
 		return <div>ローディング中です</div>;
@@ -21,11 +21,11 @@ export const User = () => {
 	return (
 		<div>
 			<Head>
-				<title>{user?.name}</title>
+				<title>{data?.name}</title>
 			</Head>
 			<div>
-				<h1>{user?.username}</h1>
-				<p>{user?.email}</p>
+				<h1>{data?.username}</h1>
+				<p>{data?.email}</p>
 			</div>
 		</div>
 	);
